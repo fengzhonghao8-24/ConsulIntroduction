@@ -1,0 +1,40 @@
+version: '3.4'
+
+services:
+  serviceb:
+    image: ${DOCKER_REGISTRY-}servicebbbbb
+    build:
+      context: .
+      dockerfile: ServiceB/Dockerfile
+    ports:
+        - 5031:80/tcp
+    container_name: "minimalapi1"
+    command: "dotnet /app/ServiceA.dll ConsulRegisterOptions:Port=8586"
+  servicea:
+    image: ${DOCKER_REGISTRY-}serviceaaaa
+    build:
+      context: .
+      dockerfile: ServiceA/Dockerfile
+    ports:
+        - 6041:80/tcp
+    container_name: "minimalapi2"
+    command: "dotnet /app/ServiceA.dll ConsulRegisterOptions:Port=8587"
+  servicea1:
+    image: ${DOCKER_REGISTRY-}serviceaaaa
+    build:
+      context: .
+      dockerfile: ServiceA/Dockerfile
+    ports:
+        - 6041:80/tcp
+    container_name: "minimalapi2"
+    command: "dotnet /app/ServiceA.dll ConsulRegisterOptions:Port=8588"
+  servicea2:
+    image: ${DOCKER_REGISTRY-}serviceaaaa
+    build:
+      context: .
+      dockerfile: ServiceA/Dockerfile
+    ports:
+        - 6041:80/tcp
+    container_name: "minimalapi2"
+    command: "dotnet /app/ServiceA.dll ConsulRegisterOptions:Port=8589"
+
